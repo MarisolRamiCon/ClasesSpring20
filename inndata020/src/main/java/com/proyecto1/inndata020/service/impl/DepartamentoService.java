@@ -6,6 +6,7 @@ import com.proyecto1.inndata020.service.IDepartamentoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -16,7 +17,14 @@ public class DepartamentoService implements IDepartamentoService {
     DepartamentoRepository departamentoRepository;
     @Override
     public List<DepartamentoEntity> readAll() {
-        return departamentoRepository.findAll();
+        List<DepartamentoEntity> info= departamentoRepository.findAll();
+        List<DepartamentoEntity> filtrada= new ArrayList<>();
+        for(DepartamentoEntity d:info){
+            if(d.getActivo()){
+                filtrada.add(d);
+            }
+        }
+        return filtrada;
     }
 
     @Override
@@ -44,4 +52,27 @@ public class DepartamentoService implements IDepartamentoService {
         }
 
     }
+
+    @Override
+    public String deleteById(Integer id) {
+        Optional<DepartamentoEntity> departamentoABorrar= departamentoRepository.findById(id);
+        if(departamentoABorrar.isPresent()){
+            DepartamentoEntity departamento= departamentoABorrar.get();
+            departamento.setActivo(false);
+            departamentoRepository.save(departamento);
+            return "Departamento Borrado";
+        }else{
+            return "No existe tal departamento";
+        }
+    }
+
+    @Override
+    public List<DepartamentoEntity> m2AndPrecio(Integer m2, Double precio) {
+        return departamentoRepository.findByM2LessThanAndPrecioIs(m2,precio);
+    }
+
+    public List<DepartamentoEntity> m2PrecioQ(Integer m2, Double precio){
+        return departamentoRepository.menorQueM2Precio(m2,precio);
+    }
+
 }

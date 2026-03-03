@@ -13,4 +13,8 @@ public interface IDepartamentoService {
     //Metodo create
     public String create(DepartamentoEntity departamento);
     public String updateById(Integer id, DepartamentoEntity departamentoNuevo);
+    public String deleteById(Integer id);
+    //Metodos personalizados
+    public List<DepartamentoEntity> m2AndPrecio(Integer m2, Double precio);
+    public List<DepartamentoEntity> m2PrecioQ (Integer m2, Double precio);
 }

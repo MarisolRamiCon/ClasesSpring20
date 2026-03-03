@@ -1,9 +1,17 @@
 package com.proyecto1.inndata020.entity;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Entity
 @Table(name = "departamento")
+//Lombok sirve para reducir codigo con annotation
+@NoArgsConstructor //Constructor sin argumentos
+@AllArgsConstructor //Constructor con todos los argumentos
+@Data //getter y setter
+
 public class DepartamentoEntity {
     @Id //Es una annotation que nos dice cual atributo es una llave primaria
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -13,37 +21,6 @@ public class DepartamentoEntity {
     private Integer m2;
     @Column(name = "precio")
     private Double precio;
-
-    public DepartamentoEntity(Integer id, Integer m2, Double precio) {
-        this.id = id;
-        this.m2 = m2;
-        this.precio = precio;
-    }
-
-    public DepartamentoEntity() {
-    }
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public Integer getM2() {
-        return m2;
-    }
-
-    public void setM2(Integer m2) {
-        this.m2 = m2;
-    }
-
-    public Double getPrecio() {
-        return precio;
-    }
-
-    public void setPrecio(Double precio) {
-        this.precio = precio;
-    }
+    @Column(name = "activo")
+    private Boolean activo=true;
 }

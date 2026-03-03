@@ -35,4 +35,17 @@ public class DepartamentoController {
     public String update(@PathVariable Integer id, @RequestBody DepartamentoEntity departamento){
         return departamentoService.updateById(id,departamento);
     }
+    @DeleteMapping("/departamentos")
+    public String deleteById(@PathParam("id") Integer id){
+        return departamentoService.deleteById(id);
+
+    }
+    @GetMapping("/m2Precio")
+    public List<DepartamentoEntity> m2AndPrecio(@PathParam("m2") Integer m2, @PathParam("precio") Double precio){
+        return departamentoService.m2AndPrecio(m2,precio);
+    }
+    @GetMapping("/m2PrecioQ")
+    public List<DepartamentoEntity> m2AndPrecioQ(@PathParam("m2") Integer m2, @PathParam("precio")Double precio){
+        return departamentoService.m2PrecioQ(m2, precio);
+    }
 }
