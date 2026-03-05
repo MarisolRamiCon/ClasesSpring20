@@ -1,6 +1,7 @@
 package com.proyecto1.inndata020.service.impl;
 
 import com.proyecto1.inndata020.entity.DepartamentoEntity;
+import com.proyecto1.inndata020.model.DepartamentoDtoRequest;
 import com.proyecto1.inndata020.repository.DepartamentoRepository;
 import com.proyecto1.inndata020.service.IDepartamentoService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,8 +34,10 @@ public class DepartamentoService implements IDepartamentoService {
     }
 
     @Override
-    public String create(DepartamentoEntity departamento) {
-        departamentoRepository.save(departamento);
+    public String create(DepartamentoDtoRequest departamento) {
+        DepartamentoEntity departamento1= new DepartamentoEntity();
+        departamento1.setM2(departamento.getM2());
+        departamentoRepository.save(departamento1);
         return "Departamento creado de manera exitosa";
     }
 

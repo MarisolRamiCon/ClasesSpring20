@@ -1,6 +1,7 @@
 package com.proyecto1.inndata020.service;
 
 import com.proyecto1.inndata020.entity.DepartamentoEntity;
+import com.proyecto1.inndata020.model.DepartamentoDtoRequest;
 import com.proyecto1.inndata020.repository.DepartamentoRepository;
 
 import java.util.List;
@@ -11,7 +12,7 @@ public interface IDepartamentoService {
     public List<DepartamentoEntity> readAll();
     public Optional<DepartamentoEntity> readById(Integer id);
     //Metodo create
-    public String create(DepartamentoEntity departamento);
+    public String create(DepartamentoDtoRequest departamento);
     public String updateById(Integer id, DepartamentoEntity departamentoNuevo);
     public String deleteById(Integer id);
     //Metodos personalizados
