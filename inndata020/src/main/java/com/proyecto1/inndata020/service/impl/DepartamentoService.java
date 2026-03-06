@@ -78,4 +78,8 @@ public class DepartamentoService implements IDepartamentoService {
         return departamentoRepository.menorQueM2Precio(m2,precio);
     }
 
+    public double sumar(double a, double b){
+        return a+b;
+    }
+
 }
