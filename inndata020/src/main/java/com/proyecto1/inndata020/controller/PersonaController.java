@@ -1,6 +1,4 @@
 package com.proyecto1.inndata020.controller;
-
-import com.proyecto1.inndata020.entity.PersonaEntity;
 import com.proyecto1.inndata020.model.PersonaDto;
 import com.proyecto1.inndata020.service.impl.PersonaService;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -4,28 +4,24 @@ import com.proyecto1.inndata020.entity.DepartamentoEntity;
 import com.proyecto1.inndata020.model.DepartamentoDtoRequest;
 import com.proyecto1.inndata020.repository.DepartamentoRepository;
 import com.proyecto1.inndata020.service.IDepartamentoService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
 @Service
 public class DepartamentoService implements IDepartamentoService {
     //Inyeccion de dependencia
-    @Autowired
-    DepartamentoRepository departamentoRepository;
+
+    private final DepartamentoRepository departamentoRepository;
+
+    public DepartamentoService(DepartamentoRepository departamentoRepository) {
+        this.departamentoRepository = departamentoRepository;
+    }
+
     @Override
     public List<DepartamentoEntity> readAll() {
-        List<DepartamentoEntity> info= departamentoRepository.findAll();
-        List<DepartamentoEntity> filtrada= new ArrayList<>();
-        for(DepartamentoEntity d:info){
-            if(d.getActivo()){
-                filtrada.add(d);
-            }
-        }
-        return filtrada;
+        return departamentoRepository.findAll().stream()
+                .filter(DepartamentoEntity::getActivo).toList();
     }
 
     @Override

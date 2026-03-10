@@ -2,8 +2,6 @@ package com.proyecto1.inndata020.service;
 
 import com.proyecto1.inndata020.entity.DepartamentoEntity;
 import com.proyecto1.inndata020.model.DepartamentoDtoRequest;
-import com.proyecto1.inndata020.repository.DepartamentoRepository;
-
 import java.util.List;
 import java.util.Optional;
 
